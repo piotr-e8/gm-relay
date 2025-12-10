@@ -19,12 +19,10 @@ import (
 
 var (
 	relays = []string{
-		"wss://wot.swarmstr.com",
 		"wss://nos.lol",
 		"wss://nostr.mom",
 		"wss://nostr.wine",
 		"wss://relay.damus.io",
-		"wss://wot.utxo.one",
 	}
 	pubkey    string
 	relay     = khatru.NewRelay()
