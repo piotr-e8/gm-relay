@@ -29,7 +29,7 @@ var (
 	pubkey    string
 	relay     = khatru.NewRelay()
 	pool      = nostr.NewSimplePool(context.Background())
-	allGmsUrl = "https://nostrrr.com/relay/gm.swarmstr.com"
+	allGmsUrl = "https://gmrelay.space"
 )
 
 func main() {
