@@ -226,7 +226,7 @@ func getStats(db sqlite3.SQLite3Backend, pubkey string) string {
 		gmCount += 1
 	}
 	if gmCount == 0 {
-		return "No GMs found!\nIf you want your GMs to be stored,\nadd wss://gm.swarmstr.com to your relay list."
+		return "No GMs found!\nIf you want your GMs to be stored,\nadd wss://gmrelay.space to your relay list."
 	}
 	var gmDays int
 	if oldestGm != nil {
