@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/fiatjaf/eventstore/sqlite3"
+	"swarmstr/go-relay/sqlite3Adapter"
 	"github.com/fiatjaf/khatru"
 	"github.com/joho/godotenv"
 	"github.com/nbd-wtf/go-nostr"
@@ -41,7 +41,7 @@ func main() {
 	pubkey, _ = nostr.GetPublicKey(getEnv("GM_BOT_PRIVATE_KEY"))
 	fmt.Printf("Bot pubkey %v", pubkey)
 
-	db := sqlite3.SQLite3Backend{DatabaseURL: "./db/db"}
+	db := sqlite3Adapter.SQLite3Backend{DatabaseURL: "./db/db"}
 	if err := db.Init(); err != nil {
 		panic(err)
 	}
