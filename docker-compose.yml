@@ -6,6 +6,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - "./db:/app/db"
-      - "./internal:/app/internal"
+      - "./internal/eventstore:/app/internal/eventstore"
     ports:
       - "3336:3336"
