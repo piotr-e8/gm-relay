@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"swarmstr/go-relay/sqlite3Adapter"
 	"github.com/fiatjaf/khatru"
 	"github.com/joho/godotenv"
 	"github.com/nbd-wtf/go-nostr"

@@ -1,4 +1,4 @@
-package sqlite3Adapter
+package main
 
 import (
 	"context"
