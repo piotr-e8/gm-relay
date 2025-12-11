@@ -122,7 +122,7 @@ func hasETag(event *nostr.Event) bool {
 	return false
 }
 
-func handleNewGMBotRequest(db sqlite3.SQLite3Backend, relays []string) {
+func handleNewGMBotRequest(db *MySQLiteBackend, relays []string) {
 	ctx := context.Background()
 
 	relay, err := nostr.RelayConnect(ctx, relays[4])
