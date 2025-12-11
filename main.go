@@ -27,7 +27,7 @@ var (
 	pubkey    string
 	relay     = khatru.NewRelay()
 	pool      = nostr.NewSimplePool(context.Background())
-	allGmsUrl = "https://gmrelay.space"
+	allGmsUrl = "https://jumble.social/relays/wss%3A%2F%2Fgmrelay.space%2F"
 )
 
 func main() {
