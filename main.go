@@ -46,7 +46,7 @@ func main() {
 		panic(err)
 	}
 
-	db := MySQLiteBackend{SQLite3Backend: &backend}
+	db := &MySQLiteBackend{SQLite3Backend: &backend}
 
 	relay.StoreEvent = append(relay.StoreEvent, db.SaveEvent)
 	relay.QueryEvents = append(relay.QueryEvents, db.QueryEvents)

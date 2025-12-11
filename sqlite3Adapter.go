@@ -17,7 +17,7 @@ type MySQLiteBackend struct {
 	*sqlite3.SQLite3Backend
 }
 
-func (b MySQLiteBackend) QueryEvents(ctx context.Context, filter nostr.Filter) (ch chan *nostr.Event, err error) {
+func (b *MySQLiteBackend) QueryEvents(ctx context.Context, filter nostr.Filter) (ch chan *nostr.Event, err error) {
 	query, params, err := b.queryEventsSql(filter, false)
 	if err != nil {
 		return nil, err
@@ -77,7 +77,7 @@ func makePlaceHolders(n int) string {
 	return strings.TrimRight(strings.Repeat("?,", n), ",")
 }
 
-func (b MySQLiteBackend) queryEventsSql(filter nostr.Filter, doCount bool) (string, []any, error) {
+func (b *MySQLiteBackend) queryEventsSql(filter nostr.Filter, doCount bool) (string, []any, error) {
 	conditions := make([]string, 0, 7)
 	params := make([]any, 0, 20)
 
