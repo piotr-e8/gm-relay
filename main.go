@@ -40,10 +40,12 @@ func main() {
 	pubkey, _ = nostr.GetPublicKey(getEnv("GM_BOT_PRIVATE_KEY"))
 	fmt.Printf("Bot pubkey %v", pubkey)
 
-	db := MySQLiteBackend{DatabaseURL: "./db/db"}
+	backend := sqlite3.SQLite3Backend{DatabaseURL: "./db/db"}
 	if err := db.Init(); err != nil {
 		panic(err)
 	}
+
+	db := MySQLiteBackend{SQLite3Backend: &backend}
 
 	relay.StoreEvent = append(relay.StoreEvent, db.SaveEvent)
 	relay.QueryEvents = append(relay.QueryEvents, db.QueryEvents)
