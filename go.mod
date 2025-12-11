@@ -34,3 +34,6 @@ require (
 	golang.org/x/net v0.26.0 // indirect
 	golang.org/x/sys v0.25.0 // indirect
 )
+
+replace github.com/fiatjaf/eventstore/sqlite3 => ./internal/sqlite3/sqlite3
+
