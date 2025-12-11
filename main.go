@@ -86,7 +86,7 @@ func endOfTheDay(t time.Time) time.Time {
 	return time.Date(year, month, day, 23, 59, 59, 0, t.Location())
 }
 
-func gmNoteNotPresentToday(db MySQLiteBackend, event *nostr.Event) bool {
+func gmNoteNotPresentToday(db *MySQLiteBackend, event *nostr.Event) bool {
 	ctx := context.Background()
 	t := time.Now()
 	bod := nostr.Timestamp(beginningOfTheDay(t).Unix())
@@ -160,7 +160,7 @@ func handleNewGMBotRequest(db sqlite3.SQLite3Backend, relays []string) {
 	//}
 }
 
-func handleNewGMBotRequestMultipleRelays(db MySQLiteBackend, relays []string, pubkey string) {
+func handleNewGMBotRequestMultipleRelays(db *MySQLiteBackend, relays []string, pubkey string) {
 	ctx := context.Background()
 
 	tags := make(nostr.TagMap)
@@ -201,7 +201,7 @@ func handleNewGMBotRequestMultipleRelays(db MySQLiteBackend, relays []string, pu
 	}
 }
 
-func getStats(db MySQLiteBackend, pubkey string) string {
+func getStats(db *MySQLiteBackend, pubkey string) string {
 	fmt.Printf(pubkey)
 	ctx := context.Background()
 
@@ -299,7 +299,7 @@ func alreadyReplied(ID string, pubkey string) bool {
 	return false
 }
 
-func getGmsTotal(db MySQLiteBackend) string {
+func getGmsTotal(db *MySQLiteBackend) string {
 	ctx := context.Background()
 	filter := nostr.Filter{
 		Kinds: []int{nostr.KindTextNote},
@@ -317,7 +317,7 @@ func getGmsTotal(db MySQLiteBackend) string {
 	return result
 }
 
-func getUserWithMostGms(db MySQLiteBackend) string {
+func getUserWithMostGms(db *MySQLiteBackend) string {
 	ctx := context.Background()
 	filter := nostr.Filter{
 		Kinds: []int{nostr.KindTextNote},
@@ -361,7 +361,7 @@ func findTopUser(groupedEvents map[string][]*nostr.Event) (string, int) {
 	return largestKey, maxLength
 }
 
-func getTodaysMissedGmNotesFromFollows(pubkey string, db MySQLiteBackend) string {
+func getTodaysMissedGmNotesFromFollows(pubkey string, db *MySQLiteBackend) string {
 	follows := getUserFollows(pubkey)
 	fmt.Printf("follows: %v", follows)
 	todaysGmNotes := getAllGmsFromToday(db)
@@ -405,7 +405,7 @@ func extractTagValues(tags nostr.Tags, key string) []string {
 	return result
 }
 
-func getAllGmsFromToday(db MySQLiteBackend) []*nostr.Event {
+func getAllGmsFromToday(db *MySQLiteBackend) []*nostr.Event {
 	events := []*nostr.Event{}
 
 	ctx := context.Background()
