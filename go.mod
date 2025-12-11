@@ -35,6 +35,5 @@ require (
 	golang.org/x/sys v0.25.0 // indirect
 )
 
-<!--replace github.com/fiatjaf/eventstore/sqlite3 => ./internal/eventstore/sqlite3-->
 replace github.com/fiatjaf/eventstore => ./internal/eventstore
 
