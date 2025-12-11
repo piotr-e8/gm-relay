@@ -6,6 +6,7 @@ WORKDIR /app
 
 # Copy go.mod and go.sum files
 COPY go.mod go.sum ./
+COPY internal/eventstore ./internal/eventstore
 
 # Download dependencies
 RUN go mod download
