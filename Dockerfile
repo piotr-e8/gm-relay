@@ -22,5 +22,7 @@ RUN go build -o main .
 # Expose the port that the application will run on
 EXPOSE 3336
 
+VOLUME ["/app/db"]
+
 # Set the command to run the executable
 CMD ["./main"]
