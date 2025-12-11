@@ -10,6 +10,9 @@ COPY go.mod go.sum ./
 # Download dependencies
 RUN go mod download
 
+RUN go clean -modcache
+RUN go mod tidy
+
 # Copy the rest of the application source code
 COPY . .
 

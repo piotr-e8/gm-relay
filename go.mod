@@ -36,4 +36,5 @@ require (
 )
 
 replace github.com/fiatjaf/eventstore/sqlite3 => ./internal/eventstore/sqlite3
+replace github.com/fiatjaf/eventstore => ./internal/eventstore
 
