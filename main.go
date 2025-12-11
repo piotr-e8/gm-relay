@@ -7,6 +7,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/nbd-wtf/go-nostr"
 	"github.com/nbd-wtf/go-nostr/nip19"
+	"github.com/fiatjaf/eventstore/sqlite3"
 	"log"
 	"net/http"
 	"os"
@@ -41,7 +42,7 @@ func main() {
 	fmt.Printf("Bot pubkey %v", pubkey)
 
 	backend := sqlite3.SQLite3Backend{DatabaseURL: "./db/db"}
-	if err := db.Init(); err != nil {
+	if err := backend.Init(); err != nil {
 		panic(err)
 	}
 
