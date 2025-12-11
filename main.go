@@ -86,7 +86,7 @@ func endOfTheDay(t time.Time) time.Time {
 	return time.Date(year, month, day, 23, 59, 59, 0, t.Location())
 }
 
-func gmNoteNotPresentToday(db sqlite3.SQLite3Backend, event *nostr.Event) bool {
+func gmNoteNotPresentToday(db MySQLiteBackend, event *nostr.Event) bool {
 	ctx := context.Background()
 	t := time.Now()
 	bod := nostr.Timestamp(beginningOfTheDay(t).Unix())
@@ -160,7 +160,7 @@ func handleNewGMBotRequest(db sqlite3.SQLite3Backend, relays []string) {
 	//}
 }
 
-func handleNewGMBotRequestMultipleRelays(db sqlite3.SQLite3Backend, relays []string, pubkey string) {
+func handleNewGMBotRequestMultipleRelays(db MySQLiteBackend, relays []string, pubkey string) {
 	ctx := context.Background()
 
 	tags := make(nostr.TagMap)
