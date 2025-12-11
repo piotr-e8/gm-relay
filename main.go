@@ -201,7 +201,7 @@ func handleNewGMBotRequestMultipleRelays(db MySQLiteBackend, relays []string, pu
 	}
 }
 
-func getStats(db sqlite3.SQLite3Backend, pubkey string) string {
+func getStats(db MySQLiteBackend, pubkey string) string {
 	fmt.Printf(pubkey)
 	ctx := context.Background()
 
@@ -299,7 +299,7 @@ func alreadyReplied(ID string, pubkey string) bool {
 	return false
 }
 
-func getGmsTotal(db sqlite3.SQLite3Backend) string {
+func getGmsTotal(db MySQLiteBackend) string {
 	ctx := context.Background()
 	filter := nostr.Filter{
 		Kinds: []int{nostr.KindTextNote},
@@ -317,7 +317,7 @@ func getGmsTotal(db sqlite3.SQLite3Backend) string {
 	return result
 }
 
-func getUserWithMostGms(db sqlite3.SQLite3Backend) string {
+func getUserWithMostGms(db MySQLiteBackend) string {
 	ctx := context.Background()
 	filter := nostr.Filter{
 		Kinds: []int{nostr.KindTextNote},
@@ -361,7 +361,7 @@ func findTopUser(groupedEvents map[string][]*nostr.Event) (string, int) {
 	return largestKey, maxLength
 }
 
-func getTodaysMissedGmNotesFromFollows(pubkey string, db sqlite3.SQLite3Backend) string {
+func getTodaysMissedGmNotesFromFollows(pubkey string, db MySQLiteBackend) string {
 	follows := getUserFollows(pubkey)
 	fmt.Printf("follows: %v", follows)
 	todaysGmNotes := getAllGmsFromToday(db)
@@ -405,7 +405,7 @@ func extractTagValues(tags nostr.Tags, key string) []string {
 	return result
 }
 
-func getAllGmsFromToday(db sqlite3.SQLite3Backend) []*nostr.Event {
+func getAllGmsFromToday(db MySQLiteBackend) []*nostr.Event {
 	events := []*nostr.Event{}
 
 	ctx := context.Background()
